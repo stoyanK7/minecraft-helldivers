@@ -35,7 +35,6 @@ public class StratagemEntity extends SnowballEntity {
 
     @Override
     protected void onCollision(HitResult hitResult) {
-        Helldivers.LOGGER.info("hit");
         super.onCollision(hitResult);
         World world = this.getWorld();
         BlockPos landPos = this.getBlockPos().down(2);
@@ -57,7 +56,7 @@ public class StratagemEntity extends SnowballEntity {
 //        https://wiki.fabricmc.net/tutorial:callbacks?s[]=event
         // TODO: Create explosion
         StratagemScheduler.scheduleStratagem(100, () -> {
-            world.createExplosion(null, landPos.getX() + 1, landPos.getY() + 1, landPos.getZ(), 4.0F, World.ExplosionSourceType.TNT);
+            world.createExplosion(null, landPos.getX() + 1, landPos.getY() + 1, landPos.getZ(), 25.0F, World.ExplosionSourceType.TNT);
         });
     }
 }

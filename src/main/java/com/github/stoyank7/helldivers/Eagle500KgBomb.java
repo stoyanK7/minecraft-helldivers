@@ -25,7 +25,6 @@ public class Eagle500KgBomb extends SnowballItem {
 
         ItemStack itemStack = user.getStackInHand(hand);
         if (world instanceof ServerWorld serverWorld) {
-            Helldivers.LOGGER.info("Shooting");
             ProjectileEntity.spawnWithVelocity(StratagemEntity::new, serverWorld, itemStack, user, 0.0F, 1, 1.0F);
         }
 
