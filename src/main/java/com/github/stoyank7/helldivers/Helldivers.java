@@ -21,5 +21,6 @@ public class Helldivers implements ModInitializer {
 
 		LOGGER.info("Hello Fabric world!");
 		ModItems.initialize();
+		StratagemScheduler.initialize();
 	}
 }

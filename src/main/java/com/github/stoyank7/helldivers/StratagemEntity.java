@@ -1,5 +1,6 @@
 package com.github.stoyank7.helldivers;
 
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -7,6 +8,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.projectile.thrown.SnowballEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.BlockPos;
@@ -46,7 +48,16 @@ public class StratagemEntity extends SnowballEntity {
         }
 
         world.setBlockState(landPos, Blocks.BEACON.getDefaultState());
-
         world.setBlockState(landPos.up(), Blocks.RED_STAINED_GLASS.getDefaultState());
+
+        // TODO: Add delayed explosion
+        // Working on: adding delay
+//        net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents
+//        https://wiki.fabricmc.net/tutorial:event_index?s[]=event
+//        https://wiki.fabricmc.net/tutorial:callbacks?s[]=event
+        // TODO: Create explosion
+        StratagemScheduler.scheduleStratagem(100, () -> {
+            world.createExplosion(null, landPos.getX() + 1, landPos.getY() + 1, landPos.getZ(), 4.0F, World.ExplosionSourceType.TNT);
+        });
     }
 }

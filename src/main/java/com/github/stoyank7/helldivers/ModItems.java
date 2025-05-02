@@ -1,5 +1,6 @@
 package com.github.stoyank7.helldivers;
 
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
